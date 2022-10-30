@@ -106,26 +106,14 @@ function total_cost() {
         sum.totalSum += goods[basket[i].goodID].price
     }
 
-    console.log(`Колличество и общая стоимость товаров в корзине:`)
-    console.log(sum) 
+     return sum
 }
 
-
-total_cost()
+console.log(`Колличество и общая стоимость товаров в корзине:`)
+console.log(total_cost())
 create(4, 20) 
 console.log(basket)
 removal(4)
 console.log(basket)
 clianing(basket)
 console.log(basket)
-
-
-
-// function sum(...c) {
-//     console.log(arguments);
-//     const d = Array.from(arguments);
-//     console.log(d);
-//     return c.reduce((acc, n) => acc + n);
-// }
-
-// console.log(sum(1, 2, 3, 4, 10, 20, 50))
