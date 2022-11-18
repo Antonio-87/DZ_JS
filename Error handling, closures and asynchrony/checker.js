@@ -1,15 +1,10 @@
-const rl = require('readline').createInterface(process.stdin, process.stdout);
 
-function getPasswordChecker(password) {
-    rl.question('Enter password: ', (get_password) => {
-        if (get_password == password) {
-            rl.close();
-            console.log(true);
-        } else {
-            console.log(false);
-            getPasswordChecker(password);
-        } 
-    })
-}
+const password = 325658;
+const checker = password => getPassword => password === getPassword;
+const getPasswordChecker = checker(password);
 
-getPasswordChecker(325658);
+console.log(getPasswordChecker(30));
+console.log(getPasswordChecker(325115));
+console.log(getPasswordChecker(''));
+console.log(getPasswordChecker('gkjhk'));
+console.log(getPasswordChecker(325658));
