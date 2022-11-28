@@ -8,11 +8,11 @@ const t = document.getElementById('timer');
 //     }
 // }, 1000);
 
-var seconds = t.textContent;
-var timer = setInterval(() => {
+let seconds = t.textContent;
+let timer = setInterval(() => {
     if (seconds > 0) {
         seconds --;
-        var h = seconds/3600 ^ 0,
+        let h = seconds/3600 ^ 0,
             m = (seconds-h*3600)/60 ^ 0,
             s = seconds-h*3600-m*60,
             time = (h < 10?"0"+h: h)+":"+(m < 10?"0"+m: m)+":"+(s < 10?"0"+s: s);
