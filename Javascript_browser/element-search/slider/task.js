@@ -1,47 +1,52 @@
-const lt = document.querySelector('.slider__arrow_prev');
-const gt = document.querySelector('.slider__arrow_next');
-const slide = Array.from(document.querySelectorAll('.slider__item'));
-const points = Array.from(document.querySelectorAll('.slider__dot'));
+const LT = document.querySelector('.slider__arrow_prev');
+const GT = document.querySelector('.slider__arrow_next');
+const SLIDES = Array.from(document.querySelectorAll('.slider__item'));
+const POINTS = Array.from(document.querySelectorAll('.slider__dot'));
 
-let i = 0;
+/**Так как изначально точка не подсвечена */
+let slideActiveIndex = SLIDES.findIndex((item) => item.classList.contains('slider__item_active'));
+POINTS[slideActiveIndex].classList.add('slider__dot_active');
 
-lt.onclick = () => {
-    slide[i].classList.toggle('slider__item_active');
-    points[i].classList.remove('slider__dot_active');
-    i--;
-    if (i == -1) {
-        i = slide.length - 1
-    }  
-    slide[i].classList.toggle('slider__item_active');
-    points[i].classList.toggle('slider__dot_active');
-}
-
-gt.onclick = () => {
-    slide[i].classList.toggle('slider__item_active');
-    points[i].classList.remove('slider__dot_active');
-    i++;
-    if (i > slide.length - 1) {
-        i = 0
+let slider = (index) => {
+    active = (i) => {
+        SLIDES[i].classList.toggle('slider__item_active', true);
+        POINTS[i].classList.toggle('slider__dot_active', true);
     }
-    slide[i].classList.toggle('slider__item_active');
-    points[i].classList.toggle('slider__dot_active');
+    
+    let slideActiveIndex = SLIDES.findIndex((item) => item.classList.contains('slider__item_active'));
+
+    if (slideActiveIndex != -1) {
+        SLIDES[slideActiveIndex].classList.remove('slider__item_active');
+        POINTS[slideActiveIndex].classList.remove('slider__dot_active');
+    }
+    
+    if (index == -1) {
+        index= SLIDES.length - 1;
+        active(index);
+    } else if (index > SLIDES.length - 1) {
+        index = 0;
+        active(index);
+    } else {
+        active(index);
+    }
 }
 
-// let duble = [];
 
-// points.forEach((point) => {
-//     point.onclick = (e) => {
-//         let elem = e.target;
-//         if (duble.length != 0) {
-//             duble[0].classList.remove('slider__dot_active');
-//             slide[points.indexOf(elem)].classList.toggle('slider__item_active');
-//             elem.classList.toggle('slider__dot_active');
-//             duble.splice(0, 1, elem);
-//         } else {
-//             slide[points.indexOf(elem)].classList.toggle('slider__item_active');
-//             elem.classList.toggle('slider__dot_active');
-//             duble.splice(0, 1, elem);
-//         }
-//     }
-// });
-    
+LT.onclick = () => {
+    let slideActiveIndex = SLIDES.findIndex((item) => item.classList.contains('slider__item_active'));
+    slideActiveIndex--;
+    slider(slideActiveIndex);
+}
+
+GT.onclick = () => {
+    let slideActiveIndex = SLIDES.findIndex((item) => item.classList.contains('slider__item_active'));
+    slideActiveIndex++;
+    slider(slideActiveIndex);
+}
+
+POINTS.forEach((point) => {
+    point.onclick = (e) => {
+        slider(POINTS.indexOf(e.target));
+    }
+});
+
