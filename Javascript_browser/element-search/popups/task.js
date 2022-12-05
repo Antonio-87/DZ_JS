@@ -21,5 +21,6 @@ POPUP_CLOSE.forEach((modal) => {
 });
 
 SHOW.onclick = () => {
+    POPUP_ACTIVE.classList.toggle('modal_active', false);
     POPUP_SUCCESS.classList.add('modal_active');
 };

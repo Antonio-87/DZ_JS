@@ -1,31 +1,20 @@
-const MENU_ITEM = Array.from(document.querySelectorAll('li'));
+const MENU_SUB = Array.from(document.querySelectorAll('.menu_sub'));
+const LINKS = Array.from(document.querySelectorAll('.menu__link'));
 
-const DUBLE = [];
-
-MENU_ITEM.forEach((item) => {
-    
-    let stop = false
-    let a = item.querySelector('a');
-    if (a) {
-        let menuSub = item.querySelector('.menu_sub');
-        
-        a.onclick = (e) => {
-            if (stop === true) {
-                e.stopPropagation;
-            } else if (menuSub != null) {
-                if (DUBLE.length != 0) {
-                    DUBLE[0].classList.remove('menu_active');
-                    menuSub.classList.add('menu_active');
-                    DUBLE.splice(0, 1, menuSub);
-                    stop = true;
-                    return false;
-                } else {
-                    menuSub.classList.add('menu_active');
-                    DUBLE.splice(0, 1, menuSub);
-                    stop = true;
-                    return false;
-                }
-            }
-       }
+LINKS.forEach((a) => {
+    a.onclick = () => {
+        let activeMenu = MENU_SUB.findIndex((item) => item.classList.contains('menu_active'));
+        let parentLink = a.closest('.menu__item')
+        let menuSub = parentLink.querySelector('.menu_sub');
+        if (menuSub != null) {
+            if (activeMenu != -1) {
+                menuSub.classList.add('menu_active');
+                MENU_SUB[activeMenu].classList.remove('menu_active');
+                return false;
+            } else {
+                menuSub.classList.add('menu_active');
+                return false;
+            }           
+        }
     }
 });

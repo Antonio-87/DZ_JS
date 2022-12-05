@@ -49,4 +49,3 @@ POINTS.forEach((point) => {
         slider(POINTS.indexOf(e.target));
     }
 });
-
