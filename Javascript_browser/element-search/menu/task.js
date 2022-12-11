@@ -4,7 +4,7 @@ const LINKS = Array.from(document.querySelectorAll('.menu__link'));
 LINKS.forEach((a) => {
     a.onclick = () => {
         let activeMenu = MENU_SUB.findIndex((item) => item.classList.contains('menu_active'));
-        let parentLink = a.closest('.menu__item')
+        let parentLink = a.closest('.menu__item');
         let menuSub = parentLink.querySelector('.menu_sub');
         if (menuSub != null) {
             if (activeMenu != -1) {
