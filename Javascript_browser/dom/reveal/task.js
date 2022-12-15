@@ -20,6 +20,14 @@ function isVisible(el) {
         return false;
     }
     return true;
+    // Вариант преподавателя
+// const { innerHeight } = window;
+// 		const { top } = el.getBoundingClientRect();
+//     if (top < innerHeight && top > 0) {
+//       reveal.classList.add("reveal_active");
+//     } else {
+//       reveal.classList.remove("reveal_active");
+//     }
 };
 
 function activeReveal(el) {
@@ -30,3 +38,4 @@ function activeReveal(el) {
     }
     el.classList.add('reveal_active');  
 }
+

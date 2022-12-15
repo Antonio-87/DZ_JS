@@ -27,8 +27,7 @@ BODY.addEventListener('click', (e) => {
                     parentBook.classList.remove('book_fs-small');
                     e.preventDefault();
                 } else {
-                    parentBook.classList.remove('book_fs-big');
-                    parentBook.classList.remove('book_fs-small');
+                    parentBook.classList.remove('book_fs-big', 'book_fs-small');
                     e.preventDefault();
                 }  
             }
