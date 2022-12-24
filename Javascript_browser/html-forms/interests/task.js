@@ -42,7 +42,7 @@ function controlUl(ul, target, item) {
     };
 };
 
-
+// Далее код для множества вложений с indeterminate!
 
 //  helper function to create nodeArrays (not collections)
 const nodeArray = (selector, parent=document) => [].slice.call(parent.querySelectorAll(selector));
