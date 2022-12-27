@@ -12,7 +12,7 @@ popupOne.className = "tooltip";
 popupTwo.className = "tooltip";
 popupOne.innerHTML = `${a[1].title}`;
 popupTwo.innerHTML = `${a[2].title}`;
-popupTwo.setAttribute('style', 'left: 162px')
+popupTwo.setAttribute('style', 'left: 162px');
 a[1].insertAdjacentElement('afterend', popupOne);
 a[2].insertAdjacentElement('afterend', popupTwo);
 body.addEventListener('click', (e) => {
