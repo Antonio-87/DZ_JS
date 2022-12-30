@@ -17,6 +17,10 @@ productsTeg.addEventListener('click', (e) => {
         count.textContent--; 
     };
 
+    if (count.textContent < 1) {
+        count.textContent = 1
+    };
+
     if (target.classList.contains('product__add')) {
         let products = [...cartProducts.querySelectorAll('.cart__product')].filter(el => el.dataset.id == product.dataset.id);
         if (products.length == 0) {
@@ -25,11 +29,10 @@ productsTeg.addEventListener('click', (e) => {
             products.forEach(el => {
                 let countCart = el.querySelector('.cart__product-count');
                 countCart.textContent = Number(countCart.textContent) + Number(count.textContent);
+                count.textContent = 1;
             });
         };
     };
-
-    
 });
 
 cartProducts.addEventListener('click', (e) => {
@@ -50,6 +53,7 @@ function add(product, count) {
         </div>
     `
     activCartTitle();
+    count.textContent = 1;
 };
 
 function removeProducts(product) {

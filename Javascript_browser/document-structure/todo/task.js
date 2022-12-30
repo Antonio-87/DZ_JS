@@ -3,18 +3,10 @@ const input = document.querySelector('input');
 const button = document.querySelector('button')
 const taskList = document.querySelector('.tasks__list');
 
-window.addEventListener('keyup', (e) => {
-    let key = e.key;
-    if ((key =='Enter') & (input.value != '')) {
-        removeDuble(input);
-        message(taskList, input);
-        input.value = '';
-    };
-});
-
 main.addEventListener('click', (e) => {
+    e.preventDefault();
     let target = e.target;
-    if ((target == button) & (input.value != '')) {
+    if (target == button && input.value.trim() != '') {
         removeDuble(input);
         message(taskList, input);
         input.value = '';
@@ -29,7 +21,7 @@ function message(tasks, input) {
     tasks.innerHTML += `
         <div class="task">
             <div class="task__title">
-                ${input.value}
+                ${input.value.trim()}
             </div>
             <a href="#" class="task__remove">&times;</a>
         </div>
@@ -44,6 +36,5 @@ function removeDuble(input) {
                 el.closest('.task').remove()
             };
         });
-    }
-    return;
+    };
 };
