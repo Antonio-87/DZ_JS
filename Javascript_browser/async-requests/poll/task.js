@@ -1,8 +1,8 @@
 const poolTitle = document.querySelector('.poll__title');
 const poolAnswers = document.querySelector('.poll__answers');
 
-const URL = 'https://students.netoservices.ru/nestjs-backend/poll'
-const URL_POST = 'https://students.netoservices.ru/nestjs-backend/poll'
+const URL = 'https://students.netoservices.ru/nestjs-backend/poll';
+const URL_POST = 'https://students.netoservices.ru/nestjs-backend/poll';
 
 fetch(URL).then(response => {
     if (response.ok) {
