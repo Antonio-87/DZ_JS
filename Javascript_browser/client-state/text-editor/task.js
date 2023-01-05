@@ -1,19 +1,14 @@
 const editor = document.getElementById('editor');
 
-let text = JSON.parse(localStorage.getItem('text'));
+let text = localStorage.getItem('text');
 
 if (text) {
     editor.value = text;
-    window.addEventListener('unload', () => {
-        localStorage.setItem('text', JSON.stringify(editor.value));
-    });
+} 
 
-} else {
-    window.addEventListener('unload', () => {
-        localStorage.setItem('text', JSON.stringify(editor.value));
-    });
-};
-
+window.addEventListener('unload', () => {
+    localStorage.setItem('text', editor.value);
+});
 
 let button = document.createElement('button');
 button.className = 'remove';
